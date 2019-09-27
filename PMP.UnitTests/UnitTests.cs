@@ -160,5 +160,16 @@ namespace PMP.UnitTests
 
         }
 
+        [Test]
+        public void UpdateTask_test()
+        {
+            ProjectManagmentController ic = new ProjectManagmentController();
+            ProjectManagmenPortal.API.Task proj = new ProjectManagmenPortal.API.Task { Start_Date =DateTime.Now, End_Date=DateTime.Now.AddDays(2),priority=13,Status="Completed"};
+            IHttpActionResult actionResult = ic.UpdateTask(proj);
+            var contentResult = actionResult as OkResult;
+            Assert.IsNotNull(contentResult);
+
+        }
+
     }
 }

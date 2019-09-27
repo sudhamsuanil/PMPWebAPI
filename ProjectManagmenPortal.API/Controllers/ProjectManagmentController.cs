@@ -304,6 +304,35 @@ namespace ProjectManagmenPortal.API.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("api/ProjectManagment/UpdateStatusOfTask/{taskId}")]
+        public IHttpActionResult UpdateTask(Task task)
+        {
+            try
+            {
+                using (var fsd = new FSDEntities())
+                {
+
+                    var insertItem = fsd.Set<Task>();
+                    Task present = new Task();
+                    present = insertItem.Where(x => x.task_id == task.task_id).First();
+                    
+                    present.Start_Date = task.Start_Date;
+                    present.End_Date = task.End_Date;
+                    present.TaskName = task.TaskName;
+                    present.Status = task.Status;
+
+                    present.Status = "Completed";
+                    fsd.SaveChanges();
+                    return Ok();
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
+        }
+
 
         [HttpDelete]
         [Route("api/ProjectManagment/DeleteUser/{identity}")]
