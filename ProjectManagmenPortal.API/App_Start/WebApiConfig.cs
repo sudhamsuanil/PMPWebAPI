@@ -21,6 +21,7 @@ namespace ProjectManagmenPortal.API
                 defaults: new { id = RouteParameter.Optional }
             );
             config.Formatters.Remove(config.Formatters.XmlFormatter);
+
         }
     }
 }
