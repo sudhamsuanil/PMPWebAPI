@@ -8,6 +8,7 @@ namespace ProjectManagmenPortal.API.Models
 {
     public class Users
     {
+
         [Key]
         public int user_id  {get;set;}
         public string FirstName {get;set;}
